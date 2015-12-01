@@ -2,11 +2,10 @@
 
 """ Module to test papers.py  """
 
-__author__ = 'Susan Sim'
-__email__ = "ses@drsusansim.org"
-
-__copyright__ = "2014 Susan Sim"
-__license__ = "MIT License"
+__authors__ = "Marcos Armstrong, Paniz Pakravan, Sinisa Savic"
+__email__ = "Marcos E-mail, p.pakravan@mail.utoronto.ca, Sinisa E-mail"
+__copyright__ = "2015 Susan Sim"
+__date__ = "16 December 2015"
 
 __status__ = "Prototype"
 
@@ -25,4 +24,3 @@ def test_returning():
     """
     assert decide("test_returning_citizen.json", "watchlist.json", "countries.json") ==\
         ["Accept", "Accept", "Quarantine"]
-
