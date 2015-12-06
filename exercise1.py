@@ -52,9 +52,15 @@ def selection(t, f):
     [["A", "B", "C"], [4, 5, 6]]
 
     """
+    # Attempt at code
+    selection_table = []
+    selection_table.append(t[0])
+    for i in xrange(1, len(t)):
+        if f(t[i]):
+            selection_table.append(t[i])
+    return selection_table
 
-    return []
-
+    #Passed given test
 
 def projection(t, r):
     """
