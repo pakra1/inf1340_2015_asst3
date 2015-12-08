@@ -84,13 +84,13 @@ def projection(t, r):
     new_list = []
     for i in r:
         if i not in t[0]:
-            raise UnknownAttributeException("Not in first table attribute list")
+
     for i in t[0]:
         if i in r:
             new_list.append(t[0].index(i))
 
     return projection_list
-
+        else raise UnknownAttributeException("Not in first table attribute list")
 
 
 def cross_product(t1, t2):
@@ -102,8 +102,13 @@ def cross_product(t1, t2):
     > R2 = [["C", "D"], [5,6]]
     [["A", "B", "C", "D"], [1, 2, 5, 6], [3, 4, 5, 6]]
 
-
     """
+    cross_product_list = []
 
-    return []
+    for i in xrange(1, len(t1)):
+        for x in xrange(1, len(t2)):
+            cross_product_list.append(t1[i] + t2[x])
+    cross_product_list.insert(0, t1[0] + t2[0])
+    return remove_duplicates(cross_product_list)
+
 
