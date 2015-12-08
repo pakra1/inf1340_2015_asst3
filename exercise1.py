@@ -59,9 +59,15 @@ def selection(t, f):
     [["A", "B", "C"], [4, 5, 6]]
 
     """
+    # Attempt at code
+    selection_table = []
+    selection_table.append(t[0])
+    for i in xrange(1, len(t)):
+        if f(t[i]):
+            selection_table.append(t[i])
+    return selection_table
 
-    return []
-
+    #Passed given test
 
 def projection(t, r):
     """
@@ -74,8 +80,17 @@ def projection(t, r):
     [["A", "C"], [1, 3], [4, 6]]
 
     """
+    projection_list = []
+    new_list = []
+    for i in r:
+        if i not in t[0]:
+            raise UnknownAttributeException("Not in first table attribute list")
+    for i in t[0]:
+        if i in r:
+            new_list.append(t[0].index(i))
 
-    return []
+    return projection_list
+
 
 
 def cross_product(t1, t2):
