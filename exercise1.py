@@ -41,10 +41,6 @@ class UnknownAttributeException(Exception):
 
 
 def selection(t, f):
-    if item in list => 2000:
-        print list
-    else:
-        print None
 
     """
 
@@ -82,15 +78,15 @@ def projection(t, r):
     """
     projection_list = []
     new_list = []
-    for i in r:
-        if i not in t[0]:
-
-    for i in t[0]:
-        if i in r:
-            new_list.append(t[0].index(i))
-
-    return projection_list
-        else raise UnknownAttributeException("Not in first table attribute list")
+    for i in xrange(len(t[0])):
+        for s in xrange(len(r)):
+            if r[s] == t[0][i]:
+                projection_list.append(i)
+            else:
+                UnknownAttributeException("Not the same attribution")
+    for n in xrange(len(t)):
+        new_list.append([t[n][index] for index in projection_list])
+    return remove_duplicates(new_list)
 
 
 def cross_product(t1, t2):
