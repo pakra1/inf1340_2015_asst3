@@ -92,11 +92,12 @@ def valid_passport_format(passport_number):
     :return: Boolean; True if the format is valid, False otherwise
     """
 
-    passport_number_set = []
-    for passport_number_set in range(5)
-    print passport_number_set.isalnum
+    passport_format = re.compile('.{5}-.{5}-.{5}-.{5}-.{5}')
 
-    return False
+    if passport_number == passport_format.isalnum:
+        return True
+    else:
+        return False
 
 
 def valid_visa_format(visa_code):
