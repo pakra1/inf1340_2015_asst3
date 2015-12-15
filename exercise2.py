@@ -119,7 +119,7 @@ def valid_date_format(date_string):
     :return: Boolean True if the format is valid, False otherwise
     """
 
-    date_format = re.comile(r"\d\d\d\d-\d\d-\d\d")
+    date_format = re.compile(r"\d\d\d\d-\d\d-\d\d")
     date_match = date_format.search(date_string)
     if date_match is None:
         date = False
