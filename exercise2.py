@@ -107,8 +107,12 @@ def valid_visa_format(visa_code):
     :return: Boolean; True if the format is valid, False otherwise
 
     """
+    visa_code =
 
-    visa_code_group =
+    if visa_code ==
+        return True
+    else:
+        return False
 
 def valid_date_format(date_string):
     """
@@ -116,13 +120,9 @@ def valid_date_format(date_string):
     :param date_string: date to be checked
     :return: Boolean True if the format is valid, False otherwise
     """
+    date_string = datetime.date.strptime(date_string, '%Y-%m-%d')
 
-    date_string_valid = date_string()
-    try:
-        date_string_valid = datetime.date.strptime(date_string, '%Y-%m-%d')
-        if date_string:
-            print("True")
-        else:
-
-
-    return False
+    if date_string == datetime.date.strptime:
+        return True
+    else:
+        return False
