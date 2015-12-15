@@ -116,8 +116,12 @@ def valid_date_format(date_string):
     :return: Boolean True if the format is valid, False otherwise
     """
 
-    date_string = date_string.strptime(birth_date, '%Y-%m-%d')
-    if
-        else
+    date_string_valid = date_string()
+    try:
+        date_string_valid = datetime.date.strptime(date_string, '%Y-%m-%d')
+        if date_string:
+            print("True")
+        else:
+
 
     return False
