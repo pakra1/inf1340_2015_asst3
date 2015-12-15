@@ -54,14 +54,12 @@ def is_more_than_x_years_ago(x, date_string):
     return (date - x_years_ago).total_seconds() < 0
 
 
-def decide(input_file, watchlist_file, countries_file):
+def decide(input_file, countries_file):
     """
     Decides whether a traveller's entry into Kanadia should be accepted
 
     :param input_file: The name of a JSON formatted file that contains
         cases to decide
-    :param watchlist_file: The name of a JSON formatted file that
-        contains names and passport numbers on a watchlist
     :param countries_file: The name of a JSON formatted file that contains
         country data, such as whether an entry or transit visa is required,
         and whether there is currently a medical advisory
@@ -71,15 +69,12 @@ def decide(input_file, watchlist_file, countries_file):
 
     with open(input_file, "r") as file_reader:
         file_contents = file.reader.read()
-        input.json = json.loads(file_contents)
-
-    with open(watchlist_file, "r") as file_reader:
-        watchlist_contents = file_reader.read()
-        watchlist.json = json.loads(watchlist_contents)
+        input = json.loads(file_contents)
 
     with open(countries_file, "r") as file_reader:
         countries_contents = file_reader.read()
-        countries.json = json.loads(countries_contents)
+        countries = json.loads(countries_contents)
+
 
 
     return ["Reject"]
@@ -92,12 +87,13 @@ def valid_passport_format(passport_number):
     :return: Boolean; True if the format is valid, False otherwise
     """
 
-    passport_format = re.compile('.{5}-.{5}-.{5}-.{5}-.{5}')
-
-    if passport_number == passport_format.isalnum:
-        return True
+    passport_format_regex= re.compile(r".{5}-.{5}-.{5}-.{5}-.{5}")
+    passport_number == passport_format_regex.search(passport_number)
+    if passport_number is None:
+        passport = False
     else:
-        return False
+        passport = True
+    return passport
 
 
 def valid_visa_format(visa_code):
@@ -107,12 +103,14 @@ def valid_visa_format(visa_code):
     :return: Boolean; True if the format is valid, False otherwise
 
     """
-    visa_code =
 
-    if visa_code ==
-        return True
+    visa_format_regex= re.compile(r".{5}-.{5}-.{5}-.{5}-.{5}")
+    visa_code == visa_format_regex.search(visa_code)
+    if visa_code is None:
+        visa = False
     else:
-        return False
+        visa = True
+    return visa
 
 def valid_date_format(date_string):
     """
@@ -120,9 +118,11 @@ def valid_date_format(date_string):
     :param date_string: date to be checked
     :return: Boolean True if the format is valid, False otherwise
     """
-    date_string = datetime.date.strptime(date_string, '%Y-%m-%d')
 
-    if date_string == datetime.date.strptime:
-        return True
+    date_format = re.comile(r"\d\d\d\d-\d\d-\d\d")
+    date_match = date_format.search(date_string)
+    if date_match is None:
+        date = False
     else:
-        return False
+        date = True
+    return date
