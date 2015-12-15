@@ -69,9 +69,17 @@ def decide(input_file, watchlist_file, countries_file):
         "Accept", "Reject", and "Quarantine"
     """
 
-    with open(input_file, "r") as countries_file:
-        countries_content = countries_file.read()
-        countries.json = json.loads(countries_content)
+    with open(input_file, "r") as file_reader:
+        file_contents = file.reader.read()
+        input.json = json.loads(file_contents)
+
+    with open(watchlist_file, "r") as file_reader:
+        watchlist_contents = file_reader.read()
+        watchlist.json = json.loads(watchlist_contents)
+
+    with open(countries_file, "r") as file_reader:
+        countries_contents = file_reader.read()
+        countries.json = json.loads(countries_contents)
 
 
     return ["Reject"]
