@@ -99,6 +99,7 @@ def valid_visa_format(visa_code):
 
     """
 
+    visa_code_group =
 
 def valid_date_format(date_string):
     """
@@ -106,5 +107,9 @@ def valid_date_format(date_string):
     :param date_string: date to be checked
     :return: Boolean True if the format is valid, False otherwise
     """
+
+    date_string = date_string.strptime(birth_date, '%Y-%m-%d')
+    if
+        else
 
     return False
