@@ -104,3 +104,48 @@ def test_cross_product():
               ["White", "production", "sales", "Brown"]]
 
     assert is_equal(result, cross_product(R1, R2))
+
+def test_cross_product():
+"""
+Test cross product operation.
+"""
+
+    result = [["Employee", "Department", "Department", "Head"],
+              ["Smith", "sales", "production", "Mori"],
+              ["Smith", "sales", "sales", "Brown"],
+              ["Black", "production", "production", "Mori"],
+              ["Black", "production", "sales", "Brown"],
+              ["White", "production", "production", "Mori"],
+              ["White", "production", "sales", "Brown"]]
+
+    assert is_equal(result, cross_product(R1, R2))
+
+def test_cross_product():
+    """
+    Test cross product operation with another table, results given in table below.
+    """
+
+    result = [["Employee", "Department", "Department", "Head"],
+              ["Smith", "sales", "production", "Mori"],
+              ["Smit", "sales", "sas", "Brown"],
+              ["Black", "production", "production", "Mori"],
+              ["Back", "production", "sas", "Brown"],
+              ["White", "product", "production", "Mori"],
+              ["White", "production", "sales", "Brow"]]
+
+    assert is_equal(result, cross_product(R1, R2))
+
+
+     # checked cross product with another table, results given in table below
+    result1 = [["Student", "Class", "Career goal"],
+              ["Alvaro", "1a", "production"],
+              ["Synopsis", "4m", "vendor"],
+              ["Clearly", "16x", "production"],
+              ["Wunderbar", "6m", "sales"],
+              ["Silent", "3m", "comedian"],
+              ["Cameo", "4m", "sales"]]
+
+    assert is_equal(result1, cross_product(R1, R2))
+
+
+    # Check if second table doesnt have same attributes, gives error
