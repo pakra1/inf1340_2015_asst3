@@ -33,6 +33,11 @@ R2 = [["Department", "Head"],
       ["production", "Mori"],
       ["sales", "Brown"]]
 
+R3 = [["Hello", "hi", "Bye"]]
+
+R4 = [["First","Last"], ["A", "B"], ["C", "D"]]
+
+R5 = [["First","Last"], ["1", "2"], ["3", "4"]]
 
 #####################
 # HELPER FUNCTIONS ##
@@ -74,6 +79,7 @@ def test_selection():
               ["Smith", "Mark", 40, 3900]]
 
     assert is_equal(result, selection(EMPLOYEES, filter_employees))
+    assert selection(R3, filter_employees) is None
 
 
 def test_projection():
@@ -103,49 +109,8 @@ def test_cross_product():
               ["White", "production", "production", "Mori"],
               ["White", "production", "sales", "Brown"]]
 
-    assert is_equal(result, cross_product(R1, R2))
-
-def test_cross_product():
-"""
-Test cross product operation.
-"""
-
-    result = [["Employee", "Department", "Department", "Head"],
-              ["Smith", "sales", "production", "Mori"],
-              ["Smith", "sales", "sales", "Brown"],
-              ["Black", "production", "production", "Mori"],
-              ["Black", "production", "sales", "Brown"],
-              ["White", "production", "production", "Mori"],
-              ["White", "production", "sales", "Brown"]]
+    result_1 = [["A", "B", "1", "2"], ["A", "B", "3", "4"], ["C", "D", "1", "2"], ["C", "D", "3", "4"], ["First", "Last", "First", "Last"]]
 
     assert is_equal(result, cross_product(R1, R2))
-
-def test_cross_product():
-    """
-    Test cross product operation with another table, results given in table below.
-    """
-
-    result = [["Employee", "Department", "Department", "Head"],
-              ["Smith", "sales", "production", "Mori"],
-              ["Smit", "sales", "sas", "Brown"],
-              ["Black", "production", "production", "Mori"],
-              ["Back", "production", "sas", "Brown"],
-              ["White", "product", "production", "Mori"],
-              ["White", "production", "sales", "Brow"]]
-
-    assert is_equal(result, cross_product(R1, R2))
-
-
-     # checked cross product with another table, results given in table below
-    result1 = [["Student", "Class", "Career goal"],
-              ["Alvaro", "1a", "production"],
-              ["Synopsis", "4m", "vendor"],
-              ["Clearly", "16x", "production"],
-              ["Wunderbar", "6m", "sales"],
-              ["Silent", "3m", "comedian"],
-              ["Cameo", "4m", "sales"]]
-
-    assert is_equal(result1, cross_product(R1, R2))
-
-
-    # Check if second table doesnt have same attributes, gives error
+    assert is_equal(result_1, cross_product(R4, R5))
+    assert cross_product(R1,R3) is None

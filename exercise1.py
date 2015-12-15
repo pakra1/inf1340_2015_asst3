@@ -58,11 +58,14 @@ def selection(t, f):
     """
     # Attempt at code
     selection_table = []
-    selection_table.append(t[0])
-    for i in xrange(1, len(t)):
-        if f(t[i]):
-            selection_table.append(t[i])
-    return selection_table
+    for row in t:
+        if f(row):
+            selection_table.append(row)
+    if len(selection_table) == 1 or len(selection_table) == 0:
+        return None
+    else:
+        selection_table = remove_duplicates(selection_table)
+        return selection_table
 
     #Passed given test
 
@@ -100,12 +103,21 @@ def cross_product(t1, t2):
     [["A", "B", "C", "D"], [1, 2, 5, 6], [3, 4, 5, 6]]
 
     """
-    cross_product_list = []
+    row = 1
+    column = 1
 
-    for i in xrange(1, len(t1)):
-        for x in xrange(1, len(t2)):
-            cross_product_list.append(t1[i] + t2[x])
-    cross_product_list.insert(0, t1[0] + t2[0])
-    return remove_duplicates(cross_product_list)
+    cross_product_list = [t1[0] + t2[0]]
+    while row < len(t1):
+        while column < len(t2):
+            cross_product_list.append(t1[row] + t2[column])
+            column += 1
+        column =1
+        row +=1
+    if len(cross_product_list) == 1:
+        cross_product_list = None
+
+    return cross_product_list
+
+
 
 
