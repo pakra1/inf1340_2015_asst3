@@ -162,11 +162,10 @@ def medical_check(Citizens):
     """
     Checks if visitors are coming from a country that has a medical advisory to know if needed to Quarantine
     """
-    if Citizens["from"]["country"]["medical advisory"] == "":
+    if CitizensCitizens["from"]["country"] in Countries.keys():
         return True
     else:
         return False
-
 def valid_information(credentials):
     if not credentials["passport"]:
         return False
@@ -187,3 +186,13 @@ def valid_information(credentials):
             return False
     else:
         return True
+
+
+def visitor_visa_required(valid_country_format):
+    '''
+    Checks if visitor has a passport from a country from which a visa is required.
+    '''
+    if Citizens["home"]["country"] in Countries.keys(visitor_visa_required):
+        return True
+    else:
+        return False
