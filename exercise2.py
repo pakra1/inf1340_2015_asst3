@@ -101,11 +101,11 @@ def valid_date_format(date_string):
     return date
 
 
-def valid_country(Citizens, Countries):
+def valid_country(Citizens):
     """
     Checks if visitor is coming and going to a valid country
     """
-    if Citizens["home"]["country"] in Countries.keys() and Citizens["from"]["country"] in Countries.keys():
+    if Citizens["home"]["country"] in COUNTRIES and Citizens["from"]["country"] in COUNTRIES:
         return True
     else:
         return False
@@ -159,6 +159,9 @@ def visitor_visa_required(visa, valid_country_format):
         else:
             return True
 
+def valid_visa(visa):
+    return valid_visa_format(visa["code"]) and valid_date_format(visa["date"]) and not is_more_than_x_years_ago(2, visa["date"])
+
 def decide(input_file, countries_file):
     """
     Decides whether a traveller's entry into Kanadia should be accepted
@@ -179,5 +182,28 @@ def decide(input_file, countries_file):
         countries_contents = file_reader.read()
         Countries = json.loads(countries_contents)
 
+    decision = []
+    for citizen in Citizens:
+        control = []
+
+        if not valid_information(citizen):
+            control = "Reject"
+        if not valid_passport_format(citizen("passport")):
+            control = "Reject"
+        if not valid_date_format(citizen("birth_date")):
+            control = "Reject"
+        if not valid_country(citizen["from"]["countries"]) or valid_country(citizen["home"]["countries"]):
+            control = "Reject"
+        if citizen["entry_reason"] == "visiting" and valid_visa_format(citizen) and valid_visa(citizen) and control != "reject":
+            control = "Accept"
+        else:
+            control = "Reject"
+
+        if medical_check(citizen):
+            control = "Quarantine"
+
+        decision.append(control)
+
+    return decision
 
 
