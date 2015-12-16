@@ -11,7 +11,7 @@ __email__ = "Marcos E-mail, p.pakravan@mail.utoronto.ca, Sinisa E-mail"
 __copyright__ = "2015 Susan Sim"
 __date__ = "16 December 2015"
 
-from exercise1 import selection, projection, cross_product
+from exercise1 import selection, projection, cross_product, UnknownAttributeException
 
 
 ###########
@@ -38,6 +38,8 @@ R3 = [["Hello", "hi", "Bye"]]
 R4 = [["First","Last"], ["A", "B"], ["C", "D"]]
 
 R5 = [["First","Last"], ["1", "2"], ["3", "4"]]
+
+R6 = []
 
 #####################
 # HELPER FUNCTIONS ##
@@ -94,6 +96,17 @@ def test_projection():
               ["Smith", "Mark"]]
 
     assert is_equal(result, projection(EMPLOYEES, ["Surname", "FirstName"]))
+    assert projection(R3, R6) is None
+
+
+def test_projection_attribute():
+    """
+    Test Unknown attribute Raise
+    """
+    try:
+        projection(EMPLOYEES, ["hello"])
+    except UnknownAttributeException:
+        assert True
 
 
 def test_cross_product():

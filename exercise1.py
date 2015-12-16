@@ -56,18 +56,20 @@ def selection(t, f):
     [["A", "B", "C"], [4, 5, 6]]
 
     """
-    # Attempt at code
+
     selection_table = []
+    # Iterates through table 1
     for row in t:
         if f(row):
             selection_table.append(row)
+    # If tables only have one schema column
     if len(selection_table) == 1 or len(selection_table) == 0:
         return None
     else:
         selection_table = remove_duplicates(selection_table)
         return selection_table
 
-    #Passed given test
+
 
 def projection(t, r):
     """
@@ -80,6 +82,8 @@ def projection(t, r):
     [["A", "C"], [1, 3], [4, 6]]
 
     """
+    if not t or not r:
+        return None
     projection_list = []
     new_list = []
     for i in xrange(len(t[0])):
@@ -106,6 +110,7 @@ def cross_product(t1, t2):
     row = 1
     column = 1
 
+    # Combine tables
     cross_product_list = [t1[0] + t2[0]]
     while row < len(t1):
         while column < len(t2):
@@ -113,6 +118,7 @@ def cross_product(t1, t2):
             column += 1
         column =1
         row +=1
+    # If tables only have one column
     if len(cross_product_list) == 1:
         cross_product_list = None
 
