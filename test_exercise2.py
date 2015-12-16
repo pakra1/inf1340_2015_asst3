@@ -28,6 +28,9 @@ def test_returning():
 
 
 def test_valid_passport_format():
+    """
+    Passport is valid.
+    """
     assert (valid_passport_format("12A34-56B78-98C76-54D32-12E34")) == True
     assert (valid_passport_format("12345-67890-09876-54321-13579")) == False
     assert (valid_passport_format("ABCDE-FGHIJ-KLMNO-PQRST-UVWXY") == False
@@ -35,10 +38,32 @@ def test_valid_passport_format():
 
 
 def test_valid_visa_format():
+    """
+    Visa is valid.
+    """
     assert (valid_visa_format("12A34-56B78")) == True
+
+    assert_false(valid_format("12AA34-56BB78")) == False
+    assert_false(valid_format("123456-789011")) == False
 
 
 def test_valid_date_format():
+    """
+    Date format is valid
+    """
+    assert(valid_date_format)
+
+    assert_false(valid_date_format("15-12-05"))
+
+def test_valid_country():
+    """
+    Travellers are coming and going to a valid country.
+    """
+    assert (valid_country()
+
+
+
+
 
 
 
