@@ -34,16 +34,6 @@ containing the following keys:
 '''
 COUNTRIES = None
 
-input_file = "json/visitor_record.json"
-countries_file = "json/country_record.json"
-
-with open(input_file, "r") as file_reader:
-        file_contents = file_reader.read()
-        Citizens = json.loads(file_contents)
-
-with open(countries_file, "r") as file_reader:
-        countries_contents = file_reader.read()
-        Countries = json.loads(countries_contents)
 #####################
 # HELPER FUNCTIONS ##
 #####################
@@ -188,5 +178,6 @@ def decide(input_file, countries_file):
     with open(countries_file, "r") as file_reader:
         countries_contents = file_reader.read()
         Countries = json.loads(countries_contents)
+
 
 
