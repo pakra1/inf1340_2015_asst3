@@ -132,7 +132,7 @@ def valid_visa_format(visa_code):
 
     """
 
-    visa_format_regex= re.compile(r".{5}-.{5}-.{5}-.{5}-.{5}")
+    visa_format_regex= re.compile(r".{5}-.{5}")
     visa_code == visa_format_regex.search(visa_code)
     if visa_code is None:
         visa = False
@@ -157,7 +157,7 @@ def valid_date_format(date_string):
     return date
 
 
-def valid_country_format(Citizens, Countries):
+def valid_country(Citizens, Countries):
     """
     Checks if visitor is coming and going to a valid country
     """
@@ -167,12 +167,20 @@ def valid_country_format(Citizens, Countries):
         return False
 
 
-def medical_check(Citizens):
+def medical_check(Citizens, medical_advisory):
     """
     Checks if visitors are coming from a country that has a medical advisory to know if needed to Quarantine
     """
-    if Citizens["from"]["country"] in Countries.keys():
-        return True
+    if "via" in Citizens.keys() and Citizens["via"]["country"] in medical_advisory.keys():
+        if medical_advisory[Citizens["via"]["country"]]["medical_advisory"] == "":
+            return False
+        else:
+            return True
+    elif Citizens["from"]["country"] in medical_advisory.keys():
+        if medical_advisory[Citizens["via"]["country"]]["medical_advisory"] == "":
+            return False
+        else:
+            return True
     else:
         return False
 
@@ -192,18 +200,17 @@ def valid_information(credentials):
         return False
     elif not credentials["from"]:
         return False
-    elif credentials.has_key("visa") is True:
-        if valid_visa_format(credentials["visa"]["code"]) is False:
-            return False
     else:
         return True
 
 
-def visitor_visa_required(valid_country_format):
+def visitor_visa_required(visa, valid_country_format):
 
     # Checks if visitor has a passport from a country from which a visa is required.
 
-    if Citizens["home"]["country"] in Countries.keys(visitor_visa_required):
-        return True
-    else:
-        return False
+    if visa["home"]["country"] in valid_country_format.keys():
+        country_visa = visa["home"]["country"]
+        if valid_country_format[country_visa]["visitor_visa_required"] == 0:
+            return False
+        else:
+            return True
