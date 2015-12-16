@@ -96,6 +96,7 @@ def valid_passport_format(passport_number):
     return passport
 
 
+
 def valid_visa_format(visa_code):
     """
     Checks whether a visa code is two groups of five alphanumeric characters
