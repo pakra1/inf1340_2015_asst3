@@ -108,7 +108,6 @@ def decide(input_file, countries_file):
     """
 
 
-
 def valid_passport_format(passport_number):
     """
     Checks whether a passport number is five sets of five alpha-number characters separated by dashes
@@ -123,7 +122,6 @@ def valid_passport_format(passport_number):
     else:
         passport = True
     return passport
-
 
 
 def valid_visa_format(visa_code):
@@ -141,6 +139,7 @@ def valid_visa_format(visa_code):
     else:
         visa = True
     return visa
+
 
 def valid_date_format(date_string):
     """
@@ -176,6 +175,8 @@ def medical_check(Citizens):
         return True
     else:
         return False
+
+
 def valid_information(credentials):
     if not credentials["passport"]:
         return False

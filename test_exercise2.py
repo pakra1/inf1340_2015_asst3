@@ -26,7 +26,12 @@ def test_returning():
         ["Accept", "Accept", "Quarantine"]
 
 
-
+def test_valid_country_format():
+    """
+    Travellers are coming and going to a valid country.
+    """
+    assert decide("test_returning_citizen.json", "countries.json") ==\
+        ["Accept", "Accept", "Quarantine"]
 
 
 
