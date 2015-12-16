@@ -200,9 +200,9 @@ def valid_information(credentials):
 
 
 def visitor_visa_required(valid_country_format):
-    '''
-    Checks if visitor has a passport from a country from which a visa is required.
-    '''
+
+    # Checks if visitor has a passport from a country from which a visa is required.
+
     if Citizens["home"]["country"] in Countries.keys(visitor_visa_required):
         return True
     else:

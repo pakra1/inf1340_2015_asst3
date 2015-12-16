@@ -26,17 +26,19 @@ def test_returning():
         ["Accept", "Accept", "Quarantine"]
 
 
-def test_valid_country_format():
-    """
-    Travellers are coming and going to a valid country.
-    """
-    assert decide("test_returning_citizen.json", "countries.json") ==\
-        ["Accept", "Accept", "Quarantine"]
+
+def test_valid_passport_format():
+    assert (valid_passport_format("12A34-56B78-98C76-54D32-12E34")) == True
+    assert (valid_passport_format("12345-67890-09876-54321-13579")) == False
+    assert (valid_passport_format("ABCDE-FGHIJ-KLMNO-PQRST-UVWXY") == False
 
 
 
+def test_valid_visa_format():
+    assert (valid_visa_format("12A34-56B78")) == True
 
 
+def test_valid_date_format():
 
 
 
