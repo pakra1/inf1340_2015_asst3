@@ -62,52 +62,6 @@ def is_more_than_x_years_ago(x, date_string):
 
     return (date - x_years_ago).total_seconds() < 0
 
-
-
-def decide(input_file, countries_file):
-    """
-    Decides whether a traveller's entry into Kanadia should be accepted
-
-    :param input_file: The name of a JSON formatted file that contains
-        cases to decide
-    :param countries_file: The name of a JSON formatted file that contains
-        country data, such as whether an entry or transit visa is required,
-        and whether there is currently a medical advisory
-    :return: List of strings. Possible values of strings are:
-        "Accept", "Reject", and "Quarantine"
-    """
-    with open(input_file, "r") as file_reader:
-        file_contents = file_reader.read()
-        Citizens = json.loads(file_contents)
-
-    with open(countries_file, "r") as file_reader:
-        countries_contents = file_reader.read()
-        Countries = json.loads(countries_contents)
-    """
-    decision = []
-    for traveler in Citizens:
-        accept = True
-        quarantine = False
-
-        accept = valid_information(traveler)
-        if accept is True:
-            accept = valid_passport_format(traveler["passport"])
-            if accept is True:
-                accept = valid_visa_format(traveler)
-        quarantine = medical_check(traveler)
-
-        if (quarantine is True) and (accept is True):
-            decision.append("Quarantine")
-        elif (quarantine is True) and (accept is False):
-            decision.append("Quarantine")
-        elif (quarantine is False) and (accept is False):
-            decision.append("Reject")
-        elif (quarantine is False) and (accept is True):
-            decision.append("Accept")
-    return decision
-    """
-
-
 def valid_passport_format(passport_number):
     """
     Checks whether a passport number is five sets of five alpha-number characters separated by dashes
@@ -214,3 +168,25 @@ def visitor_visa_required(visa, valid_country_format):
             return False
         else:
             return True
+
+def decide(input_file, countries_file):
+    """
+    Decides whether a traveller's entry into Kanadia should be accepted
+
+    :param input_file: The name of a JSON formatted file that contains
+        cases to decide
+    :param countries_file: The name of a JSON formatted file that contains
+        country data, such as whether an entry or transit visa is required,
+        and whether there is currently a medical advisory
+    :return: List of strings. Possible values of strings are:
+        "Accept", "Reject", and "Quarantine"
+    """
+    with open(input_file, "r") as file_reader:
+        file_contents = file_reader.read()
+        Citizens = json.loads(file_contents)
+
+    with open(countries_file, "r") as file_reader:
+        countries_contents = file_reader.read()
+        Countries = json.loads(countries_contents)
+
+
