@@ -34,6 +34,16 @@ containing the following keys:
 '''
 COUNTRIES = None
 
+input_file = "json/visitor_record.json"
+countries_file = "json/country_record.json"
+
+with open(input_file, "r") as file_reader:
+        file_contents = file_reader.read()
+        Citizens = json.loads(file_contents)
+
+with open(countries_file, "r") as file_reader:
+        countries_contents = file_reader.read()
+        Countries = json.loads(countries_contents)
 
 #####################
 # HELPER FUNCTIONS ##
@@ -54,6 +64,7 @@ def is_more_than_x_years_ago(x, date_string):
     return (date - x_years_ago).total_seconds() < 0
 
 
+
 def decide(input_file, countries_file):
     """
     Decides whether a traveller's entry into Kanadia should be accepted
@@ -67,13 +78,6 @@ def decide(input_file, countries_file):
         "Accept", "Reject", and "Quarantine"
     """
 
-    with open(input_file, "r") as file_reader:
-        file_contents = file.reader.read()
-        input = json.loads(file_contents)
-
-    with open(countries_file, "r") as file_reader:
-        countries_contents = file_reader.read()
-        countries = json.loads(countries_contents)
 
 
 
@@ -127,3 +131,44 @@ def valid_date_format(date_string):
     else:
         date = True
     return date
+
+
+def valid_country_format(Citizens, Countries):
+    """
+    Checks if visitor is coming and going to a valid country
+    """
+    if Citizens["home"]["country"] in Countries.keys() and Citizens["from"]["country"] in Countries.keys():
+        return True
+    else:
+        return False
+
+
+def medical_check(Citizens):
+    """
+    Checks if visitors are coming from a country that has a medical advisory to know if needed to Quarantine
+    """
+    if Citizens["from"]["country"]["medical advisory"] == "":
+        return True
+    else:
+        return False
+
+def valid_information(credentials):
+    if not credentials["passport"]:
+        return False
+    elif not credentials["first_name"]:
+        return False
+    elif not credentials["last_name"]:
+        return False
+    elif not credentials["birth_date"]:
+        return False
+    elif not credentials["home"]:
+        return False
+    elif not credentials["entry_reason"]:
+        return False
+    elif not credentials["from"]:
+        return False
+    elif credentials.has_key("visa") is True:
+        if valid_visa_format(credentials["visa"]["code"]) is False:
+            return False
+    else:
+        return True

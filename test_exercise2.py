@@ -34,36 +34,4 @@ def test_returning():
 
 
 
-def test_valid_date_format():
-
-    # Will return true
-    try:
-        valid_date(2011-07-01)
-    except MismatchedAttributesException:
-        assert True
-    else:
-        assert MismatchedAttributesException
-
-    # Will return false
-    try:
-        valid_date(2011.07.01)
-    except MismatchedAttributesException:
-        assert True
-    else:
-        MismatchedAttributesException
-
-    # Will return false
-    try:
-        valid_date(200.7.1)
-    except MismatchedAttributesException:
-        assert True
-    else:
-        MismatchedAttributesException
-
-
-
-
-
-
-
 
