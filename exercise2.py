@@ -34,6 +34,16 @@ containing the following keys:
 '''
 COUNTRIES = None
 
+input_file = "json/visitor_record.json"
+countries_file = "json/country_record.json"
+
+with open(input_file, "r") as file_reader:
+        file_contents = file_reader.read()
+        Citizens = json.loads(file_contents)
+
+with open(countries_file, "r") as file_reader:
+        countries_contents = file_reader.read()
+        Countries = json.loads(countries_contents)
 #####################
 # HELPER FUNCTIONS ##
 #####################
@@ -162,7 +172,7 @@ def medical_check(Citizens):
     """
     Checks if visitors are coming from a country that has a medical advisory to know if needed to Quarantine
     """
-    if CitizensCitizens["from"]["country"] in Countries.keys():
+    if Citizens["from"]["country"] in Countries.keys():
         return True
     else:
         return False
