@@ -35,7 +35,10 @@ def test_valid_passport_format():
     assert(valid_passport_format("12A34-56B78-98C76-54D32-12E34")) == True
     assert(valid_passport_format("12345-67890-09876-54321-13579")) == True
     assert(valid_passport_format("ABCDE-FGHIJ-KLMNO-PQRST-UVWXY")) == False
-
+    assert(valid_passport_format("ABCDEFGHIJKLMNO-PQRST-UVWXY")) == False
+    assert(valid_passport_format("1BCDE-2GHIJ-3LMNO-4QRST-5VWXY")) == True
+    assert(valid_passport_format("12a34-56b78-98c76-54d32-12e34")) == True
+    assert(valid_passport_format("12A3456B78-98C7654D32-12E34")) == False
 
 
 
@@ -47,6 +50,7 @@ def test_valid_visa_format():
 
     assert(valid_visa_format("12AA34-56BB78")) == False
     assert(valid_visa_format("123456-789011")) == False
+    assert(valid_visa_format(""))
 
 
 
