@@ -34,10 +34,11 @@ def test_valid_passport_format():
     """
     assert(valid_passport_format("12A34-56B78-98C76-54D32-12E34")) == True
     assert(valid_passport_format("12345-67890-09876-54321-13579")) == True
-    assert(valid_passport_format("ABCDE-FGHIJ-KLMNO-PQRST-UVWXY")) == False
-    assert(valid_passport_format("ABCDEFGHIJKLMNO-PQRST-UVWXY")) == False
     assert(valid_passport_format("1BCDE-2GHIJ-3LMNO-4QRST-5VWXY")) == True
     assert(valid_passport_format("12a34-56b78-98c76-54d32-12e34")) == True
+
+    assert(valid_passport_format("ABCDE-FGHIJ-KLMNO-PQRST-UVWXY")) == False
+    assert(valid_passport_format("ABCDEFGHIJKLMNO-PQRST-UVWXY")) == False
     assert(valid_passport_format("12A3456B78-98C7654D32-12E34")) == False
 
 
@@ -47,10 +48,14 @@ def test_valid_visa_format():
     Visa is valid.
     """
     assert(valid_visa_format("12A34-56B78")) == True
+    assert(valid_visa_format("A1234-Z9876")) == True
 
     assert(valid_visa_format("12AA34-56BB78")) == False
     assert(valid_visa_format("123456-789011")) == False
-    assert(valid_visa_format(""))
+    assert(valid_visa_format("12A3456BB78")) == False
+    assert(valid_visa_format("#2A34-56B78")) == False
+    assert(valid_visa_format("12T4512X45")) == False
+
 
 
 
@@ -58,16 +63,19 @@ def test_valid_date_format():
     """
     Date format is valid
     """
-    assert(valid_date_format)
+    assert (valid_date_format("2010-10-01")) == True
+    assert (valid_date_format("1899-06-29")) == True
+    assert (valid_date_format)("2003-02-29")) == True
 
     assert (valid_date_format("15-12-05")) == False
-    assert (valid_date_format("2020-12-05"))== False
-    assert (valid_date_format("2020-12-05"))== False
-    assert (valid_date_format("1999-12-5"))== False
-    assert (valid_date_format("1999-2-05"))== False
-    assert (valid_date_format("2014-SEP-05"))== False
-    assert (valid_date_format("2014-SE-05"))== False
-    assert (valid_date_format("2014-31-12"))== False
+    assert (valid_date_format("2020-12-05")) == False
+    assert (valid_date_format("2020-12-05")) == False
+    assert (valid_date_format("1999-12-5")) == False
+    assert (valid_date_format("1999-2-05")) == False
+    assert (valid_date_format("2014-SEP-05")) == False
+    assert (valid_date_format("2014-SE-05")) == False
+    assert (valid_date_format("2014-31-12")) == False
+    assert (valid_date_format("2010-04-44")) == False
 
 def test_valid_country():
     """
