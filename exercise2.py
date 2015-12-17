@@ -94,14 +94,20 @@ def valid_date_format(date_string):
     :param date_string: date to be checked
     :return: Boolean True if the format is valid, False otherwise
     """
+    year = int(1900 - 2015)
+    month = int(01 - 12)
+    day = int(01 - 31)
 
     date_format = re.compile(r"\d\d\d\d-\d\d-\d\d")
-    date_match = date_format.search(date_string)
-    if date_match is None:
-        date = False
+    date_string = date_format.search(date_string)
+    if year < 1900 or year > 2015:
+        return False
+    elif month < 01 or month > 12:
+        return False
+    elif day < 01 or day > 31:
+        return False
     else:
-        date = True
-    return date
+        date_string is True
 
 
 def valid_passport_date(citizen):
