@@ -12,11 +12,11 @@ __status__ = "Prototype"
 # imports one per line
 import pytest
 import os
-from exercise2 import decide, valid_passport_format, valid_visa_format, valid_information, valid_country
-from exercise2 import medical_check, visitor_visa_required, valid_date_format
+from exercise2 import decide, valid_passport_format, valid_visa_format, valid_country
+from exercise2 import valid_date_format
 
 #DIR = "test_jsons/"
-#os.chdir(DIR)
+#0s.chdir(DIR)
 
 
 def test_returning():
@@ -65,7 +65,7 @@ def test_valid_date_format():
     """
     assert (valid_date_format("2010-10-01")) == True
     assert (valid_date_format("1899-06-29")) == True
-    assert (valid_date_format)("2003-02-29")) == True
+    assert (valid_date_format("2003-02-29")) == True
 
     assert (valid_date_format("15-12-05")) == False
     assert (valid_date_format("2020-12-05")) == False
@@ -83,13 +83,13 @@ def test_valid_country():
     """
     assert (valid_country("Democratic Republic of Lungary")) == True
     assert (valid_country("democratic republic of lungary")) == True
-    assert (valid_country("Kraznoviklandstan") == True
-    assert (valid_country("kraznoviklandstan") == True
-    assert (valid_country("KRAZNOVIKLANDSTAN") == True
+    assert (valid_country("Kraznoviklandstan")) == True
+    assert (valid_country("kraznoviklandstan")) == True
+    assert (valid_country("KRAZNOVIKLANDSTAN")) == True
 
     assert (valid_country("Democratic_Republic/of=Lungary")) == False
-    assert (valid_country("Kraznoviklandsta") == False
-    assert (valid_country("Principalities of Fryed") == False
+    assert (valid_country("Kraznoviklandsta")) == False
+    assert (valid_country("Principalities of Fryed")) == False
     assert (valid_country("Democratic Republic of Lungary ")) == False
     assert (valid_country("FRY")) == False
 
