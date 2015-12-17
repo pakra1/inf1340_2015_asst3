@@ -61,7 +61,7 @@ def test_valid_visa_format():
 
 def test_valid_date_format():
     """
-    Date format is valid
+    Date format is valid.
     """
     assert (valid_date_format("2010-10-01")) == True
     assert (valid_date_format("1899-06-29")) == True
@@ -81,7 +81,17 @@ def test_valid_country():
     """
     Travellers are coming and going to a valid country.
     """
+    assert (valid_country("Democratic Republic of Lungary")) == True
+    assert (valid_country("democratic republic of lungary")) == True
+    assert (valid_country("Kraznoviklandstan") == True
+    assert (valid_country("kraznoviklandstan") == True
+    assert (valid_country("KRAZNOVIKLANDSTAN") == True
 
+    assert (valid_country("Democratic_Republic/of=Lungary")) == False
+    assert (valid_country("Kraznoviklandsta") == False
+    assert (valid_country("Principalities of Fryed") == False
+    assert (valid_country("Democratic Republic of Lungary ")) == False
+    assert (valid_country("FRY")) == False
 
 
 
