@@ -7,9 +7,9 @@ Computer-based immigration office for Kanadia
 """
 
 __authors__ = "Marcos Armstrong, Paniz Pakravan, Sinisa Savic"
-__email__ = "Marcos E-mail, p.pakravan@mail.utoronto.ca, Sinisa E-mail"
-__copyright__ = "2015 Susan Sim"
+__email__ = "marcos.armstrong@mail.utoronto.ca, p.pakravan@mail.utoronto.ca, sinisa.savic@mail.utoronto.ca"
 __date__ = "16 December 2015"
+
 
 import re
 import datetime
@@ -115,7 +115,7 @@ def valid_country(Citizens):
     """
     Checks if visitor is coming and going to a valid country
     """
-    if Citizens["home"]["country"] in COUNTRIES and Citizens["from"]["country"] in COUNTRIES:
+    if Citizens["home"]["country"] in COUNTRIES:
         return True
     else:
         return False

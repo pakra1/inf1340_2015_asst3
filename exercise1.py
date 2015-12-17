@@ -6,10 +6,8 @@ This module performs table operations on database tables
 implemented as lists of lists. """
 
 __authors__ = "Marcos Armstrong, Paniz Pakravan, Sinisa Savic"
-__email__ = "Marcos E-mail, p.pakravan@mail.utoronto.ca, Sinisa E-mail"
-__copyright__ = "2015 Susan Sim"
+__email__ = "marcos.armstrong@mail.utoronto.ca, p.pakravan@mail.utoronto.ca, sinisa.savic@mail.utoronto.ca"
 __date__ = "16 December 2015"
-
 
 
 #####################
