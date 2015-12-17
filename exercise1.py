@@ -38,7 +38,6 @@ class UnknownAttributeException(Exception):
     pass
 
 
-
 def selection(t, f):
 
     """
@@ -66,7 +65,6 @@ def selection(t, f):
     else:
         selection_table = remove_duplicates(selection_table)
         return selection_table
-
 
 
 def projection(t, r):
@@ -114,14 +112,10 @@ def cross_product(t1, t2):
         while column < len(t2):
             cross_product_list.append(t1[row] + t2[column])
             column += 1
-        column =1
-        row +=1
+        column = 1
+        row += 1
     # If tables only have one column
     if len(cross_product_list) == 1:
         cross_product_list = None
 
     return cross_product_list
-
-
-
-

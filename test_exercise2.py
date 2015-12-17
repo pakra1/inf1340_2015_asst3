@@ -3,7 +3,8 @@
 """ Module to test papers.py  """
 
 __authors__ = "Marcos Armstrong, Paniz Pakravan, Sinisa Savic"
-__email__ = "marcos.armstrong@mail.utoronto.ca, p.pakravan@mail.utoronto.ca, sinisa.savic@mail.utoronto.ca"
+__email__ = "Marcos E-mail, p.pakravan@mail.utoronto.ca, Sinisa E-mail"
+__copyright__ = "2015 Susan Sim"
 __date__ = "16 December 2015"
 
 __status__ = "Prototype"
@@ -14,8 +15,8 @@ import os
 from exercise2 import decide, valid_passport_format, valid_visa_format, valid_country
 from exercise2 import valid_date_format
 
-#DIR = "test_jsons/"
-#0s.chdir(DIR)
+# DIR = "test_jsons/"
+# 0s.chdir(DIR)
 
 
 def test_returning():
@@ -35,15 +36,16 @@ def test_valid_passport_format():
     assert(valid_passport_format("12345-67890-09876-54321-13579")) is True
     assert(valid_passport_format("1BCDE-2GHIJ-3LMNO-4QRST-5VWXY")) is True
     assert(valid_passport_format("12a34-56b78-98c76-54d32-12e34")) is True
+    assert(valid_passport_format("ABCDE-FGHIJ-KLMNO-PQRST-UVWXY")) is True
 
-    assert(valid_passport_format("ABCDE-FGHIJ-KLMNO-PQRST-UVWXY")) is False
     assert(valid_passport_format("ABCDEFGHIJKLMNO-PQRST-UVWXY")) is False
     assert(valid_passport_format("12A3456B78-98C7654D32-12E34")) is False
 
 
+
 def test_valid_visa_format():
     """
-    Testing if visa format is valid or invalid.
+    Visa is valid.
     """
     assert(valid_visa_format("12A34-56B78")) is True
     assert(valid_visa_format("A1234-Z9876")) is True
@@ -55,23 +57,21 @@ def test_valid_visa_format():
     assert(valid_visa_format("12T4512X45")) is False
 
 
+
+
 def test_valid_date_format():
     """
-    Testing if fate format is valid or invalid.
+    Date format is valid.
     """
-
     assert (valid_date_format("2010-10-01")) is True
-    assert (valid_date_format("1999-06-29")) is True
+    assert (valid_date_format("1899-06-29")) is True
     assert (valid_date_format("2003-02-29")) is True
 
-    assert (valid_date_format("")) is False # empty string
     assert (valid_date_format("15-12-05")) is False
+    assert (valid_date_format("2020-12-05")) is False
+    assert (valid_date_format("2020-12-05")) is False
     assert (valid_date_format("1999-12-5")) is False
     assert (valid_date_format("1999-2-05")) is False
-    assert (valid_date_format("2014-SEP-05")) is False
-    assert (valid_date_format("2014-Sep-05")) is False
-    assert (valid_date_format("2014-31-12")) is False
-    assert (valid_date_format("2010-04-44")) is False
 
 
 def test_valid_country():

@@ -34,15 +34,17 @@ R2 = [["Department", "Head"],
 
 R3 = [["Hello", "hi", "Bye"]]
 
-R4 = [["First","Last"], ["A", "B"], ["C", "D"]]
+R4 = [["First", "Last"], ["A", "B"], ["C", "D"]]
 
-R5 = [["First","Last"], ["1", "2"], ["3", "4"]]
+R5 = [["First", "Last"], ["1", "2"], ["3", "4"]]
 
 R6 = []
 
 #####################
 # HELPER FUNCTIONS ##
 #####################
+
+
 def is_equal(t1, t2):
 
     t1.sort()
@@ -125,4 +127,4 @@ def test_cross_product():
 
     assert is_equal(result, cross_product(R1, R2))
     assert is_equal(result_1, cross_product(R4, R5))
-    assert cross_product(R1,R3) is None
+    assert cross_product(R1, R3) is None
