@@ -74,6 +74,7 @@ def test_valid_date_format():
     assert (valid_date_format("1999-2-05")) is False
 
 
+
 def test_valid_country():
     """
     Travellers are coming and going to a valid country.
@@ -89,6 +90,19 @@ def test_valid_country():
     assert (valid_country("Principalities of Fryed")) is False
     assert (valid_country("Democratic Republic of Lungary ")) is False
     assert (valid_country("FRY")) is False
+
+
+def test_medical_check():
+    """
+    Visitors are coming from a country that has a medical advisory, to know if needed to Quarantine.
+    """
+    assert (test_medical_check("Democratic Republic of Lungary", "MUMPS")) is True
+    assert (test_medical_check("Kraznoviklandstan", "")) is True
+    assert (test_medical_check("Isle of Ii", "")) is True
+
+    assert (test_medical_check("Isle of Iillll", "")) is False
+    assert (test_medical_check("Democratic Republic of Lungary", "")) is False
+
 
 
 
