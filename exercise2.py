@@ -62,7 +62,7 @@ def valid_passport_format(passport_number):
     :return: Boolean; True if the format is valid, False otherwise
     """
 
-    passport_format_regex= re.compile(r"(\w{5}-){4}\w{5}")
+    passport_format_regex= re.compile(r"'\w\w\w\w\w - \w\w\w\w\w - \w\w\w\w\w - \w\w\w\w\w")
     passport_number == passport_format_regex.search(passport_number)
     if passport_number is None:
         passport = False
