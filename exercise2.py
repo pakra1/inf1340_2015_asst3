@@ -17,13 +17,13 @@ import json
 
 
 ######################
-## global constants ##
+# Global constants ##
 ######################
 REQUIRED_FIELDS = ["passport", "first_name", "last_name",
                    "birth_date", "home", "entry_reason", "from"]
 
 ######################
-## global variables ##
+# global variables ##
 ######################
 '''
 countries:
@@ -62,7 +62,7 @@ def valid_passport_format(passport_number):
     :return: Boolean; True if the format is valid, False otherwise
     """
 
-    passport_format_regex= re.compile(r"'\w\w\w\w\w - \w\w\w\w\w - \w\w\w\w\w - \w\w\w\w\w")
+    passport_format_regex = re.compile(r"'\w\w\w\w\w - \w\w\w\w\w - \w\w\w\w\w - \w\w\w\w\w")
     passport_number == passport_format_regex.search(passport_number)
     if passport_number is None:
         passport = False
@@ -111,27 +111,27 @@ def valid_passport_date(citizen):
         return False
 
 
-def valid_country(Citizens):
+def valid_country(citizens):
     """
     Checks if visitor is coming and going to a valid country
     """
-    if Citizens["home"]["country"] in COUNTRIES and Citizens["from"]["country"] in COUNTRIES:
+    if citizens["home"]["country"] in COUNTRIES and citizens["from"]["country"] in COUNTRIES:
         return True
     else:
         return False
 
 
-def medical_check(Citizens, medical_advisory):
+def medical_check(citizens, medical_advisory):
     """
     Checks if visitors are coming from a country that has a medical advisory to know if needed to Quarantine
     """
-    if "via" in Citizens.keys() and Citizens["via"]["country"] in medical_advisory.keys():
-        if medical_advisory[Citizens["via"]["country"]]["medical_advisory"] == "":
+    if "via" in citizens.keys() and citizens["via"]["country"] in medical_advisory.keys():
+        if medical_advisory[citizens["via"]["country"]]["medical_advisory"] == "":
             return False
         else:
             return True
-    elif Citizens["from"]["country"] in medical_advisory.keys():
-        if medical_advisory[Citizens["via"]["country"]]["medical_advisory"] == "":
+    elif citizens["from"]["country"] in medical_advisory.keys():
+        if medical_advisory[citizens["via"]["country"]]["medical_advisory"] == "":
             return False
         else:
             return True
